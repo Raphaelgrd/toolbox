@@ -1,0 +1,18 @@
+<!--
+name: Tags de projet
+category: badges
+description: Pastilles bleu très pâle avec pictogramme, pour typer un projet (format, cible, animation).
+style: minimaliste
+complexite: simple
+-->
+<style>
+  .pls-tags{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .pls-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 16px 6px 10px;border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-secondary) 5%,transparent);color:var(--color-secondary);font:var(--weight-medium) var(--text-sm)/1.4 var(--font-body);letter-spacing:-.015em}
+  .pls-tag svg{width:16px;height:16px}
+</style>
+
+<div class="pls-tags">
+  <span class="pls-tag"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="3.5" y="2.5" width="9" height="11" rx="2"/></svg>Une page</span>
+  <span class="pls-tag"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><rect x="2.5" y="3.5" width="11" height="9" rx="2"/><path d="M5 7h6M5 9.5h4"/></svg>Formation</span>
+  <span class="pls-tag"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M3 12c2-6 4-6 5-3s3 3 5-3"/></svg>Animé</span>
+</div>

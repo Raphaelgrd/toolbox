@@ -55,14 +55,14 @@ export async function ElementPage({ kind, slug }: { kind: ElementKind; slug: str
         <aside className="space-y-4 xl:sticky xl:top-6 xl:self-start">
           <div className="card p-6">
             <p className="eyebrow">Site d'origine</p>
-            <Link href={`/kits/${element.site.slug}`} className="mt-3 flex items-center gap-3">
+            <Link href={`/sites/${element.site.slug}`} className="mt-3 flex items-center gap-3">
               <span
                 className="size-9 rounded-xl ring-1 ring-black/10"
                 style={{ background: kitMap.get(element.site.slug)?.colors.primary }}
               />
               <span>
                 <span className="block font-semibold text-ink">{element.site.name}</span>
-                <span className="text-sm text-mute">Voir le kit →</span>
+                <span className="text-sm text-mute">Voir le site →</span>
               </span>
             </Link>
           </div>

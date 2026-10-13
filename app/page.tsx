@@ -12,7 +12,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<Sea
   const stats = [
     { label: "Composants", value: counts.totalComponents, href: "/composants" },
     { label: "Sections", value: counts.totalSections, href: "/sections" },
-    { label: "Kits", value: counts.kits.length, href: "/kits" },
+    { label: "Sites", value: counts.kits.length, href: "/sites" },
     { label: "Catégories", value: Object.keys(counts.components).length + Object.keys(counts.sections).length, href: "/composants" },
   ];
   return (

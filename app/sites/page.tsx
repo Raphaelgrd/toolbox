@@ -4,22 +4,22 @@ import { PageIntro } from "@/components/page-intro";
 import { Topbar } from "@/components/topbar";
 import { libraryStore } from "@/lib/library-store";
 
-export const metadata = { title: "Kits" };
+export const metadata = { title: "Sites" };
 
-export default async function KitsPage() {
+export default async function SitesPage() {
   const sites = await libraryStore.listSites();
   return (
     <>
       <Suspense>
-        <Topbar crumbs={[{ label: "Kits" }]} />
+        <Topbar crumbs={[{ label: "Sites" }]} />
       </Suspense>
       <div className="space-y-10 px-5 py-8 sm:px-8 sm:py-10">
-        <PageIntro title="Kits" subtitle="Le design system complet de chaque site : couleurs, typo, espacements, ombres, animations." />
+        <PageIntro title="Sites" subtitle="Chaque site a son espace : son design system, ses sections et ses composants." />
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {sites.map((s) => {
             const c = s.kit?.colors ?? {};
             return (
-              <Link key={s.slug} href={`/kits/${s.slug}`} className="card group overflow-hidden transition-shadow hover:shadow-[0_18px_40px_-20px_rgba(18,18,18,.35)]">
+              <Link key={s.slug} href={`/sites/${s.slug}`} className="card group overflow-hidden transition-shadow hover:shadow-[0_18px_40px_-20px_rgba(18,18,18,.35)]">
                 <div className="relative h-40 p-6" style={{ background: c.bg, color: c.text }}>
                   <p className="text-3xl leading-none" style={{ fontFamily: s.kit?.typography.families.heading, fontWeight: Number(s.kit?.typography.weights.bold) }}>
                     Aa

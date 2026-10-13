@@ -1,0 +1,18 @@
+<!--
+name: Bouton de contact flottant
+category: boutons
+description: Rond sombre fixé en bas à droite, bulle de discussion, contour pointillé qui tourne lentement.
+style: minimaliste
+complexite: moyenne
+-->
+<style>
+  .pls-float{position:relative;display:grid;place-items:center;width:72px;height:72px;border-radius:50%;background:linear-gradient(127deg,color-mix(in srgb,var(--color-primary) 88%,#fff) -3%,color-mix(in srgb,var(--color-primary) 80%,#000) 106%);color:#fff;box-shadow:var(--shadow-md);text-decoration:none;transition:transform var(--duration-fast) var(--ease-emphasized)}
+  .pls-float:hover{transform:scale(1.06)}
+  .pls-float::after{content:"";position:absolute;inset:-6px;border-radius:50%;border:1px dashed color-mix(in srgb,var(--color-text) 35%,transparent);animation:pls-float-spin 14s linear infinite}
+  .pls-float svg{width:30px;height:30px}
+  @keyframes pls-float-spin{to{transform:rotate(1turn)}}
+</style>
+
+<a href="#" class="pls-float" aria-label="Nous écrire">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><path d="M4 18.5 5.2 15A7.5 7.5 0 1 1 8.6 18.3L4 19.5z"/></svg>
+</a>

@@ -1,0 +1,28 @@
+<!--
+name: Carte offre
+category: cartes
+description: Carte d'offre avec visuel abstrait, badge et prix.
+style: organique
+complexite: moyenne
+-->
+<style>
+  .offer-card{width:320px;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);overflow:hidden;box-shadow:var(--shadow-md)}
+  .offer-card__media{position:relative;height:160px;background:radial-gradient(circle at 30% 30%,var(--color-secondary),transparent 60%),radial-gradient(circle at 80% 70%,var(--color-accent),transparent 55%),var(--color-primary)}
+  .offer-card__badge{position:absolute;top:var(--space-4);left:var(--space-4);background:var(--color-surface);color:var(--color-primary);font:var(--weight-bold) var(--text-xs)/1 var(--font-body);padding:var(--space-2) var(--space-3);border-radius:var(--radius-full)}
+  .offer-card__body{padding:var(--space-6)}
+  .offer-card h3{margin:0 0 var(--space-2);font:var(--weight-bold) var(--text-2xl)/1.1 var(--font-heading);color:var(--color-text)}
+  .offer-card p{margin:0 0 var(--space-6);color:var(--color-muted);line-height:var(--leading-normal)}
+  .offer-card__foot{display:flex;align-items:center;justify-content:space-between}
+  .offer-card__foot strong{font:var(--weight-bold) var(--text-2xl)/1 var(--font-heading);color:var(--color-text)}
+  .offer-card__foot small{font-size:var(--text-sm);color:var(--color-muted);font-weight:var(--weight-regular)}
+  .offer-card__foot button{border:0;background:var(--color-primary);color:var(--color-surface);padding:var(--space-3) var(--space-5);border-radius:var(--radius-full);font-weight:var(--weight-medium);cursor:pointer}
+</style>
+
+<article class="offer-card">
+  <div class="offer-card__media"><span class="offer-card__badge">Nouveau</span></div>
+  <div class="offer-card__body">
+    <h3>Offre Horizon</h3>
+    <p>Électricité 100 % renouvelable, prix fixe pendant deux ans.</p>
+    <div class="offer-card__foot"><strong>39 €<small>/mois</small></strong><button>Choisir</button></div>
+  </div>
+</article>

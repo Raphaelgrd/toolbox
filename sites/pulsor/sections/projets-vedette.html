@@ -1,0 +1,47 @@
+<!--
+name: Projets en vedette
+category: features
+description: Visuel sombre arrondi à gauche avec carte suivante en dessous, flèches verticales, puis fiche projet (logo, tags bleus, texte, liens).
+style: minimaliste
+complexite: avancee
+components: carte-projet, fleches-carrousel, tags-projet, boutons-chevron
+-->
+<style>
+  .pls-works{display:grid;grid-template-columns:minmax(0,1.1fr) auto minmax(0,1fr);gap:var(--space-8);align-items:start;max-width:1200px;margin:0 auto;padding:var(--space-16) var(--space-10) var(--space-24);color:var(--color-text);font:var(--weight-regular) var(--text-base)/var(--leading-normal) var(--font-body);letter-spacing:-.015em}
+  .pls-works__visual{position:relative}
+  .pls-works__shot{aspect-ratio:5/3;border-radius:var(--radius-lg);background:linear-gradient(127deg,color-mix(in srgb,var(--color-primary) 88%,#fff) -3%,color-mix(in srgb,var(--color-primary) 80%,#000) 106%);display:grid;place-items:center;overflow:hidden}
+  .pls-works__shot span{width:70%;padding:var(--space-6);border-radius:var(--radius-sm);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.85);font:var(--weight-bold) var(--text-2xl)/1.1 var(--font-heading);letter-spacing:-.03em;transform:perspective(900px) rotateX(18deg) rotateZ(-6deg)}
+  .pls-works__next{height:90px;margin:var(--space-6) 6% 0;border-radius:var(--radius-lg) var(--radius-lg) 0 0;background:linear-gradient(color-mix(in srgb,var(--color-text) 10%,transparent),transparent)}
+  .pls-works__arrows{display:grid;gap:var(--space-2);padding-top:120px}
+  .pls-works__arrows button{display:grid;place-items:center;width:38px;height:38px;border:0;border-radius:var(--radius-full);background:var(--color-surface);color:var(--color-muted);box-shadow:var(--shadow-sm);cursor:pointer}
+  .pls-works__info{display:grid;gap:var(--space-5);padding-top:var(--space-6)}
+  .pls-works__head{display:flex;align-items:center;gap:var(--space-4)}
+  .pls-works__logo{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-sm)}
+  .pls-works__logo i{width:26px;height:26px;border-radius:7px;background:var(--color-primary)}
+  .pls-works h3{margin:0;font:var(--weight-bold) var(--text-3xl)/var(--leading-tight) var(--font-heading);letter-spacing:-.015em}
+  .pls-works__tags{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .pls-works__tags span{padding:6px 14px;border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-secondary) 5%,transparent);color:var(--color-secondary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+  .pls-works__info p{margin:0;color:var(--color-muted)}
+  .pls-works__links{display:flex;gap:var(--space-2)}
+  .pls-works__links a{padding:10px 16px;border-radius:16px;color:var(--color-text);font-weight:var(--weight-medium);text-decoration:none}
+  .pls-works__links a:first-child{background:var(--color-border)}
+  .pls-works__links a:last-child{box-shadow:inset 0 0 0 1px var(--color-border)}
+  @media (max-width:860px){.pls-works{grid-template-columns:1fr;padding:var(--space-12) var(--space-5)}.pls-works__arrows{display:none}}
+</style>
+
+<section class="pls-works">
+  <div class="pls-works__visual">
+    <div class="pls-works__shot"><span>Une nouvelle manière de se former</span></div>
+    <div class="pls-works__next"></div>
+  </div>
+  <div class="pls-works__arrows">
+    <button aria-label="Précédent">⌃</button>
+    <button aria-label="Suivant">⌄</button>
+  </div>
+  <div class="pls-works__info">
+    <div class="pls-works__head"><span class="pls-works__logo"><i></i></span><h3>Projet Atlas</h3></div>
+    <div class="pls-works__tags"><span>Une page</span><span>Formation</span><span>Animé</span></div>
+    <p>Une formation premium avec un univers visuel codé de bout en bout et une direction artistique poussée, loin des standards du marché.</p>
+    <div class="pls-works__links"><a href="#">Détails du projet ›</a><a href="#">Site en ligne ›</a></div>
+  </div>
+</section>

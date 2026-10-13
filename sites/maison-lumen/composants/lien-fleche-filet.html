@@ -1,0 +1,16 @@
+<!--
+name: Lien filet
+category: boutons
+description: Lien d'action éditorial : filet qui se trace au survol, flèche fine.
+style: editorial
+complexite: simple
+-->
+<style>
+  .rule-link{position:relative;display:inline-flex;gap:var(--space-3);align-items:center;font:var(--weight-regular) var(--text-xl)/1.2 var(--font-heading);color:var(--color-text);text-decoration:none;padding-bottom:var(--space-2)}
+  .rule-link::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--color-primary);transform:scaleX(.25);transform-origin:left;transition:transform var(--duration-slow) var(--ease-standard)}
+  .rule-link:hover::after{transform:scaleX(1)}
+  .rule-link span{color:var(--color-primary);transition:transform var(--duration-slow) var(--ease-standard)}
+  .rule-link:hover span{transform:translateX(6px)}
+</style>
+
+<a href="#" class="rule-link">Prendre rendez-vous <span aria-hidden="true">⟶</span></a>

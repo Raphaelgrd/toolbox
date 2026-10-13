@@ -1,0 +1,41 @@
+<!--
+name: Hero titre XXL avec avis
+category: hero
+description: Titre PP Mori géant et serré avec badge bleu incliné, sous-titre estompé, deux CTA, avis client et note, sur fond de colonnes en pointillés.
+style: minimaliste
+complexite: avancee
+components: bouton-principal, bouton-clair, badge-incline, avis-client, bloc-note
+-->
+<style>
+  .pls-hero{position:relative;overflow:hidden;padding:var(--space-24) var(--space-10) var(--space-16);background:var(--color-bg);color:var(--color-text);font-family:var(--font-body);letter-spacing:-.015em;text-align:center}
+  .pls-hero::before{content:"";position:absolute;inset:0 8%;background-image:radial-gradient(color-mix(in srgb,var(--color-text) 22%,transparent) 1px,transparent 1.2px);background-size:6px 6px;-webkit-mask:repeating-linear-gradient(90deg,#000 0 14%,transparent 14% 17%),linear-gradient(#000 40%,transparent 95%);-webkit-mask-composite:source-in;mask:repeating-linear-gradient(90deg,#000 0 14%,transparent 14% 17%),linear-gradient(#000 40%,transparent 95%);mask-composite:intersect;opacity:.45;pointer-events:none}
+  .pls-hero>*{position:relative}
+  .pls-hero__title{position:relative;max-width:16ch;margin:0 auto;font:var(--weight-bold) clamp(44px,6.4vw,var(--text-5xl))/var(--leading-tight) var(--font-heading);letter-spacing:-.04em}
+  .pls-hero__anchor{position:relative;display:inline-block}
+  .pls-hero__badge{position:absolute;left:4%;top:82%;white-space:nowrap;padding:4px 8px;border-radius:8px;background:var(--color-secondary);color:#fff;font:var(--weight-regular) var(--text-sm)/1.4 var(--font-mono);text-transform:uppercase;letter-spacing:.02em;transform:rotate(3deg);box-shadow:var(--shadow-lg),inset 0 0 8px rgba(255,255,255,.2)}
+  .pls-hero__sub{max-width:62ch;margin:var(--space-5) auto 0;color:var(--color-muted);font-size:var(--text-lg);line-height:var(--leading-normal)}
+  .pls-hero__ctas{display:flex;justify-content:center;gap:var(--space-3);flex-wrap:wrap;margin-top:var(--space-12)}
+  .pls-hero__ctas a{display:inline-flex;align-items:center;gap:var(--space-2);padding:12px 20px;border-radius:var(--radius-full);font:var(--weight-medium) var(--text-base)/1.4 var(--font-body);text-decoration:none;transition:transform var(--duration-base) var(--ease-standard)}
+  .pls-hero__ctas a:hover{transform:translateY(-1px)}
+  .pls-hero__main{background:linear-gradient(220deg,color-mix(in srgb,var(--color-primary) 80%,#fff),color-mix(in srgb,var(--color-primary) 85%,#000));color:#fff;box-shadow:var(--shadow-md)}
+  .pls-hero__soft{background:color-mix(in srgb,var(--color-border) 60%,var(--color-surface));color:var(--color-text);box-shadow:inset 0 0 12px #fff,0 0 32px rgba(0,0,0,.03)}
+  .pls-hero__review{margin:var(--space-10) auto 0;max-width:30ch;font-size:var(--text-sm);font-weight:var(--weight-medium)}
+  .pls-hero__review p{margin:0 0 var(--space-3)}
+  .pls-hero__who{display:flex;justify-content:center;align-items:center;gap:var(--space-3)}
+  .pls-hero__who b{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--color-primary);color:#fff;font-size:var(--text-xs)}
+  .pls-hero__who i{font-style:normal;color:var(--color-accent);letter-spacing:2px}
+  .pls-hero__score{display:inline-flex;align-items:center;gap:10px;margin-top:var(--space-8);padding:4px 4px 4px 12px;border-radius:var(--radius-md);background:var(--color-border);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+  .pls-hero__score span{padding:6px 10px;border-radius:var(--radius-sm);background:var(--color-surface);box-shadow:var(--shadow-sm)}
+  @media (max-width:640px){.pls-hero{padding:var(--space-16) var(--space-5) var(--space-12)}}
+</style>
+
+<section class="pls-hero">
+  <h1 class="pls-hero__title">Des sites <span class="pls-hero__anchor">d'exception<span class="pls-hero__badge">&amp; data-driven</span></span> pour des projets uniques.</h1>
+  <p class="pls-hero__sub">Des sites construits sur la donnée, avec une valeur perçue si forte que vos visiteurs ont peur de passer à côté.</p>
+  <div class="pls-hero__ctas"><a href="#" class="pls-hero__main">Réserver un appel ↗</a><a href="#" class="pls-hero__soft">Voir nos réalisations</a></div>
+  <div class="pls-hero__review">
+    <p>« Un site exceptionnel, l'équipe a tout compris. »</p>
+    <div class="pls-hero__who"><b>CM</b>Camille M.<i>★★★★★</i></div>
+  </div>
+  <div class="pls-hero__score">Avis clients <span>★ 4,9</span></div>
+</section>

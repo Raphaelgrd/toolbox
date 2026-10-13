@@ -1,0 +1,20 @@
+<!--
+name: Curseur de valeur
+category: sliders
+description: Input range stylé avec valeur affichée en direct.
+style: organique
+complexite: moyenne
+-->
+<style>
+  .range{width:360px;font:var(--text-sm) var(--font-body);color:var(--color-muted)}
+  .range__head{display:flex;justify-content:space-between;margin-bottom:var(--space-4)}
+  .range output{font:var(--weight-bold) var(--text-lg) var(--font-heading);color:var(--color-text)}
+  .range input{width:100%;appearance:none;-webkit-appearance:none;height:8px;border-radius:var(--radius-full);background:linear-gradient(90deg,var(--color-primary),var(--color-secondary));outline:none}
+  .range input::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--color-surface);border:3px solid var(--color-primary);box-shadow:var(--shadow-md);cursor:grab}
+  .range input::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--color-surface);border:3px solid var(--color-primary);cursor:grab}
+</style>
+
+<div class="range">
+  <div class="range__head"><span>Consommation annuelle</span><output id="range-out">4 500 kWh</output></div>
+  <input type="range" min="1000" max="12000" step="500" value="4500" oninput="document.getElementById('range-out').textContent=Number(this.value).toLocaleString('fr-FR')+' kWh'" />
+</div>

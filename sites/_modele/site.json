@@ -1,0 +1,9 @@
+{
+  "name": "Nom du site",
+  "url": "https://exemple.fr",
+  "domain": "exemple.fr",
+  "sector": { "value": "saas", "label": "SaaS" },
+  "description": "Une phrase sur le site et son style.",
+  "style": "minimaliste",
+  "ambiance": "clair"
+}

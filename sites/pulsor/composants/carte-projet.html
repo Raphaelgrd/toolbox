@@ -1,0 +1,29 @@
+<!--
+name: Fiche projet
+category: cartes
+description: Logo en carré blanc, nom du projet, tags bleus, description estompée et deux liens à chevron.
+style: minimaliste
+complexite: moyenne
+-->
+<style>
+  .pls-project{display:grid;gap:var(--space-5);max-width:500px;color:var(--color-text);font:var(--weight-regular) var(--text-base)/var(--leading-normal) var(--font-body);letter-spacing:-.015em}
+  .pls-project__head{display:flex;align-items:center;gap:var(--space-4)}
+  .pls-project__logo{display:grid;place-items:center;width:44px;height:44px;border-radius:12px;background:var(--color-surface);box-shadow:var(--shadow-sm)}
+  .pls-project__logo span{width:26px;height:26px;border-radius:7px;background:var(--color-primary)}
+  .pls-project h3{margin:0;font:var(--weight-bold) var(--text-3xl)/var(--leading-tight) var(--font-heading);letter-spacing:-.015em}
+  .pls-project__tags{display:flex;gap:var(--space-2);flex-wrap:wrap}
+  .pls-project__tags span{padding:6px 14px;border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-secondary) 5%,transparent);color:var(--color-secondary);font-size:var(--text-sm);font-weight:var(--weight-medium)}
+  .pls-project p{margin:0;color:var(--color-muted)}
+  .pls-project__links{display:flex;gap:var(--space-2)}
+  .pls-project__links a{padding:10px 16px;border-radius:16px;color:var(--color-text);font-weight:var(--weight-medium);text-decoration:none;transition:background var(--duration-base) var(--ease-standard)}
+  .pls-project__links a:first-child{background:var(--color-border)}
+  .pls-project__links a:last-child{box-shadow:inset 0 0 0 1px var(--color-border)}
+  .pls-project__links a:hover{background:color-mix(in srgb,var(--color-text) 8%,transparent)}
+</style>
+
+<article class="pls-project">
+  <div class="pls-project__head"><span class="pls-project__logo"><span></span></span><h3>Projet Atlas</h3></div>
+  <div class="pls-project__tags"><span>Une page</span><span>Formation</span><span>Animé</span></div>
+  <p>Une formation premium avec un univers visuel codé de bout en bout et une direction artistique poussée, loin des standards du marché.</p>
+  <div class="pls-project__links"><a href="#">Détails du projet ›</a><a href="#">Site en ligne ›</a></div>
+</article>

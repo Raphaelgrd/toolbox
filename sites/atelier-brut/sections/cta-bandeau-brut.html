@@ -1,0 +1,23 @@
+<!--
+name: Bandeau CTA défilant
+category: cta
+description: Bandeau texte défilant en boucle et bouton à ombre dure.
+style: brutaliste
+complexite: moyenne
+components: bouton-ombre-dure
+-->
+<style>
+  .cta-brut{border-block:3px solid var(--color-border);background:var(--color-primary);overflow:hidden}
+  .cta-brut__marquee{display:flex;white-space:nowrap;border-bottom:3px solid var(--color-border);padding:var(--space-5) 0;font:var(--weight-bold) var(--text-4xl)/1 var(--font-heading);text-transform:uppercase;color:var(--color-text)}
+  .cta-brut__marquee div{animation:marquee 18s linear infinite;padding-right:var(--space-4)}
+  @keyframes marquee{to{transform:translateX(-100%)}}
+  .cta-brut__body{display:flex;justify-content:space-between;align-items:center;gap:var(--space-6);padding:var(--space-10) var(--space-8);background:var(--color-bg);flex-wrap:wrap}
+  .cta-brut__body p{margin:0;font:var(--text-lg) var(--font-body);color:var(--color-text)}
+  .cta-brut__body a{padding:var(--space-4) var(--space-8);background:var(--color-secondary);color:var(--color-text);border:3px solid var(--color-border);box-shadow:var(--shadow-md);text-decoration:none;font:var(--weight-bold) var(--text-lg) var(--font-heading);text-transform:uppercase}
+  .cta-brut__body a:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-lg)}
+</style>
+
+<section class="cta-brut">
+  <div class="cta-brut__marquee"><div>Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶&nbsp;</div><div aria-hidden="true">Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶ Un projet ? Parlons-en ✶&nbsp;</div></div>
+  <div class="cta-brut__body"><p>Réponse sous 48 h. Devis gratuit.</p><a href="#">Écrire au studio</a></div>
+</section>

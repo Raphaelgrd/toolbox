@@ -1,0 +1,18 @@
+<!--
+name: Fil d'Ariane
+category: navigation
+description: Fil d'Ariane éditorial en petites capitales.
+style: editorial
+complexite: simple
+-->
+<style>
+  .crumbs{display:flex;gap:var(--space-3);align-items:center;font:var(--text-sm)/1 var(--font-body);letter-spacing:.14em;text-transform:uppercase}
+  .crumbs a{color:var(--color-muted);text-decoration:none;transition:color var(--duration-fast) var(--ease-standard)}
+  .crumbs a:hover{color:var(--color-text)}
+  .crumbs span{color:var(--color-primary)}
+  .crumbs em{font-style:normal;color:var(--color-text)}
+</style>
+
+<nav class="crumbs" aria-label="Fil d'Ariane">
+  <a href="#">Accueil</a><span>/</span><a href="#">Expertises</a><span>/</span><em aria-current="page">Droit des sociétés</em>
+</nav>

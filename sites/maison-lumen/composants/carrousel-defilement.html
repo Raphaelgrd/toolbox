@@ -1,0 +1,21 @@
+<!--
+name: Carrousel à aimantation
+category: sliders
+description: Carrousel horizontal en CSS pur (scroll-snap), cartes éditoriales.
+style: editorial
+complexite: moyenne
+-->
+<style>
+  .snap{display:flex;gap:var(--space-4);width:min(100%,720px);overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:var(--space-4);scrollbar-width:thin;scrollbar-color:var(--color-primary) transparent}
+  .snap article{flex:0 0 260px;scroll-snap-align:start;padding:var(--space-8) var(--space-6);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface)}
+  .snap small{font:var(--text-sm) var(--font-mono);color:var(--color-primary)}
+  .snap h3{margin:var(--space-10) 0 var(--space-2);font:var(--weight-bold) var(--text-2xl)/1.1 var(--font-heading);color:var(--color-text)}
+  .snap p{margin:0;color:var(--color-muted);line-height:var(--leading-normal)}
+</style>
+
+<div class="snap">
+  <article><small>01</small><h3>Conseil</h3><p>Une analyse claire avant toute décision.</p></article>
+  <article><small>02</small><h3>Négociation</h3><p>Défendre vos intérêts à chaque étape.</p></article>
+  <article><small>03</small><h3>Contentieux</h3><p>Une stratégie construite pour durer.</p></article>
+  <article><small>04</small><h3>Suivi</h3><p>Un interlocuteur unique, disponible.</p></article>
+</div>

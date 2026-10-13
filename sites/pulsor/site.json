@@ -1,0 +1,9 @@
+{
+  "name": "Pulsor",
+  "url": "https://www.pulsor.agency",
+  "domain": "pulsor.agency",
+  "sector": { "value": "agence", "label": "Agence web" },
+  "description": "Agence de sites world-class : fond presque blanc, titres PP Mori très serrés, CTA noirs en pilule avec ombre portée, accent bleu.",
+  "style": "minimaliste",
+  "ambiance": "clair"
+}

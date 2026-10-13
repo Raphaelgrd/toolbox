@@ -1,0 +1,14 @@
+<!--
+name: Bouton ombre dure
+category: boutons
+description: Bouton brutaliste : trait épais, ombre décalée qui s'écrase au clic.
+style: brutaliste
+complexite: simple
+-->
+<style>
+  .brut-btn{font:var(--weight-bold) var(--text-lg)/1 var(--font-heading);text-transform:uppercase;letter-spacing:.02em;padding:var(--space-4) var(--space-6);background:var(--color-primary);color:var(--color-text);border:3px solid var(--color-border);border-radius:var(--radius-md);box-shadow:var(--shadow-md);cursor:pointer;transition:transform var(--duration-fast) linear,box-shadow var(--duration-fast) linear}
+  .brut-btn:hover{transform:translate(-2px,-2px);box-shadow:var(--shadow-lg)}
+  .brut-btn:active{transform:translate(6px,6px);box-shadow:none}
+</style>
+
+<button class="brut-btn">Envoyer le brief</button>

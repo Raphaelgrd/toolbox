@@ -1,0 +1,33 @@
+<!--
+name: Grille de fonctionnalités
+category: features
+description: Titre de section et grille 3 colonnes de cartes à pictogramme.
+style: corporate
+complexite: moyenne
+components: carte-fonctionnalite
+-->
+<style>
+  .feat{padding:var(--space-20) var(--space-6);max-width:1120px;margin:0 auto}
+  .feat header{text-align:center;margin-bottom:var(--space-12)}
+  .feat__kicker{margin:0 0 var(--space-3);color:var(--color-primary);font-weight:var(--weight-bold);font-size:var(--text-sm);text-transform:uppercase;letter-spacing:.1em}
+  .feat h2{margin:0;font:var(--weight-bold) var(--text-4xl)/1.1 var(--font-heading);letter-spacing:-.02em;color:var(--color-text)}
+  .feat__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)}
+  .feat article{padding:var(--space-8);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg)}
+  .feat b{display:grid;place-items:center;width:44px;height:44px;border-radius:var(--radius-md);background:color-mix(in srgb,var(--color-primary) 12%,transparent);color:var(--color-primary);font-size:var(--text-lg)}
+  .feat h3{margin:var(--space-5) 0 var(--space-2);font:var(--weight-bold) var(--text-lg) var(--font-heading);color:var(--color-text)}
+  .feat article p{margin:0;color:var(--color-muted);line-height:var(--leading-normal)}
+  @media (max-width:860px){.feat__grid{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.feat__grid{grid-template-columns:1fr}.feat h2{font-size:var(--text-3xl)}}
+</style>
+
+<section class="feat">
+  <header><p class="feat__kicker">Fonctionnalités</p><h2>Tout ce qu'il faut, rien de trop.</h2></header>
+  <div class="feat__grid">
+    <article><b>⚡</b><h3>Automatisations</h3><p>Des règles simples pour les tâches répétitives.</p></article>
+    <article><b>◎</b><h3>Objectifs</h3><p>Suivez la progression de chaque équipe.</p></article>
+    <article><b>⌘</b><h3>Raccourcis</h3><p>Tout est accessible au clavier.</p></article>
+    <article><b>↻</b><h3>Synchronisation</h3><p>Vos outils restent à jour en temps réel.</p></article>
+    <article><b>◐</b><h3>Mode sombre</h3><p>Pour les longues journées.</p></article>
+    <article><b>✓</b><h3>Validation</h3><p>Circuits d'approbation en deux clics.</p></article>
+  </div>
+</section>

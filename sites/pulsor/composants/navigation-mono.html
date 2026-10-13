@@ -1,0 +1,28 @@
+<!--
+name: Barre de navigation mono
+category: navigation
+description: Logo carré sombre, liens centraux en capitales mono estompées, bouton compact à droite ; burger en mobile.
+style: minimaliste
+complexite: moyenne
+components: bouton-compact
+-->
+<style>
+  .pls-nav{display:flex;align-items:center;justify-content:space-between;gap:var(--space-6);width:min(100%,1200px);padding:var(--space-4) var(--space-6);font-family:var(--font-body)}
+  .pls-nav__logo{display:flex;align-items:center;gap:var(--space-2);color:var(--color-text);text-decoration:none;font:var(--weight-medium) var(--text-xl)/1 var(--font-body);letter-spacing:-.03em}
+  .pls-nav__mark{display:grid;place-items:center;width:32px;height:32px;border-radius:9px;background:linear-gradient(127deg,color-mix(in srgb,var(--color-primary) 88%,#fff) -3%,color-mix(in srgb,var(--color-primary) 80%,#000) 106%);box-shadow:-5px 4px 6px rgba(0,0,0,.06),-1px 1px 4px rgba(0,0,0,.12)}
+  .pls-nav__mark::before{content:"";width:12px;height:12px;border-radius:50%;border:2.5px solid #fff;border-right-color:transparent}
+  .pls-nav__links{display:flex;gap:var(--space-1)}
+  .pls-nav__links a{padding:6px 12px;border-radius:var(--radius-sm);color:var(--color-muted);font:var(--weight-regular) var(--text-sm)/1.4 var(--font-mono);text-transform:uppercase;text-decoration:none;transition:color var(--duration-base) var(--ease-standard),background var(--duration-base) var(--ease-standard)}
+  .pls-nav__links a:hover{color:var(--color-text);background:var(--color-border)}
+  .pls-nav__cta{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:var(--radius-md);background:var(--color-border);color:var(--color-muted);font:var(--weight-medium) var(--text-sm)/1.4 var(--font-body);text-decoration:none}
+  .pls-nav__burger{display:none;width:36px;height:36px;border:0;border-radius:var(--radius-sm);background:var(--color-border)}
+  .pls-nav__burger::before{content:"";display:block;width:16px;height:6px;margin:auto;border-block:1.5px solid var(--color-text)}
+  @media (max-width:760px){.pls-nav__links,.pls-nav__cta{display:none}.pls-nav__burger{display:block}}
+</style>
+
+<header class="pls-nav">
+  <a href="#" class="pls-nav__logo"><span class="pls-nav__mark"></span>Marque</a>
+  <nav class="pls-nav__links"><a href="#">Réalisations</a><a href="#">Offre</a><a href="#">Nous rejoindre</a></nav>
+  <a href="#" class="pls-nav__cta">↗ Réserver un appel</a>
+  <button class="pls-nav__burger" aria-label="Menu"></button>
+</header>

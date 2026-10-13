@@ -1,0 +1,12 @@
+{
+  "name": "Nordwave",
+  "url": null,
+  "domain": null,
+  "sector": {
+    "value": "saas",
+    "label": "SaaS"
+  },
+  "description": "Éditeur SaaS fictif : bleu franc, interface dense et nette.",
+  "style": "corporate",
+  "ambiance": "clair"
+}

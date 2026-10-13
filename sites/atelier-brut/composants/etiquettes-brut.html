@@ -1,0 +1,15 @@
+<!--
+name: Étiquettes tamponnées
+category: badges
+description: Étiquettes inclinées façon tampon, ombre dure.
+style: brutaliste
+complexite: simple
+-->
+<style>
+  .stamps{display:flex;gap:var(--space-3)}
+  .stamps span{padding:var(--space-2) var(--space-4);border:3px solid var(--color-border);background:var(--color-primary);font:var(--weight-bold) var(--text-sm)/1 var(--font-heading);text-transform:uppercase;box-shadow:var(--shadow-sm);transform:rotate(-3deg)}
+  .stamps span:nth-child(2){background:var(--color-secondary);transform:rotate(2deg)}
+  .stamps span:nth-child(3){background:var(--color-accent);color:var(--color-surface);transform:rotate(-1deg)}
+</style>
+
+<div class="stamps"><span>Branding</span><span>Web</span><span>Motion</span></div>

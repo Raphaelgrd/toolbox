@@ -1,0 +1,28 @@
+<!--
+name: Témoignages en citations
+category: temoignages
+description: Une grande citation et deux plus petites, avatars en initiales.
+style: organique
+complexite: simple
+-->
+<style>
+  .quotes{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--space-5);padding:var(--space-20) var(--space-6);max-width:1100px;margin:0 auto}
+  .quotes figure{margin:0;padding:var(--space-8);border-radius:var(--radius-lg);background:var(--color-surface);border:1px solid var(--color-border);display:flex;flex-direction:column;justify-content:space-between;gap:var(--space-8)}
+  .quotes__main{background:var(--color-primary)!important;color:var(--color-surface);border:0!important}
+  .quotes__main blockquote{font:var(--weight-bold) var(--text-3xl)/1.25 var(--font-heading)}
+  .quotes__side{display:grid;gap:var(--space-5)}
+  .quotes blockquote{margin:0;font:var(--text-xl)/1.4 var(--font-heading);color:inherit}
+  .quotes__side blockquote{color:var(--color-text)}
+  .quotes figcaption{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-sm);color:var(--color-muted)}
+  .quotes__main figcaption{color:color-mix(in srgb,var(--color-surface) 80%,transparent)}
+  .quotes figcaption span{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:var(--color-secondary);color:var(--color-text);font-weight:var(--weight-bold);font-size:var(--text-xs)}
+  @media (max-width:760px){.quotes{grid-template-columns:1fr}.quotes__main blockquote{font-size:var(--text-2xl)}}
+</style>
+
+<section class="quotes">
+  <figure class="quotes__main"><blockquote>« La facture a baissé dès le premier hiver, et on sait enfin d'où vient notre électricité. »</blockquote><figcaption><span>CL</span>Claire L. · Lyon</figcaption></figure>
+  <div class="quotes__side">
+    <figure><blockquote>« Souscription en dix minutes, vraiment. »</blockquote><figcaption><span>MB</span>Marc B.</figcaption></figure>
+    <figure><blockquote>« Un service client qui répond, et qui sait. »</blockquote><figcaption><span>SA</span>Sofia A.</figcaption></figure>
+  </div>
+</section>

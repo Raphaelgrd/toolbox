@@ -1,0 +1,26 @@
+<!--
+name: Carte verre dépoli
+category: cartes
+description: Carte bancaire en verre dépoli sur fond de lueurs.
+style: glassmorphism
+complexite: moyenne
+-->
+<style>
+  .glass-stage{position:relative;padding:var(--space-12)}
+  .glass-stage::before,.glass-stage::after{content:"";position:absolute;width:180px;height:180px;border-radius:50%;filter:blur(40px);opacity:.8}
+  .glass-stage::before{background:var(--color-primary);top:0;left:0}
+  .glass-stage::after{background:var(--color-secondary);bottom:0;right:0}
+  .glass-card{position:relative;width:340px;padding:var(--space-6);border-radius:var(--radius-lg);background:color-mix(in srgb,var(--color-surface) 45%,transparent);border:1px solid color-mix(in srgb,var(--color-text) 18%,transparent);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);color:var(--color-text);box-shadow:var(--shadow-md)}
+  .glass-card__top,.glass-card__bottom{display:flex;justify-content:space-between;align-items:center;font:var(--text-sm)/1 var(--font-body);color:var(--color-muted)}
+  .glass-card__chip{width:36px;height:26px;border-radius:6px;background:linear-gradient(135deg,var(--color-accent),var(--color-primary))}
+  .glass-card__amount{display:block;margin:var(--space-8) 0;font:var(--weight-bold) var(--text-3xl)/1 var(--font-heading);letter-spacing:-.02em}
+  .glass-card__bottom{font-family:var(--font-mono)}
+</style>
+
+<div class="glass-stage">
+  <div class="glass-card">
+    <div class="glass-card__top"><span>Solde</span><span class="glass-card__chip"></span></div>
+    <strong class="glass-card__amount">12 480,00 €</strong>
+    <div class="glass-card__bottom"><span>•••• 4821</span><span>09/29</span></div>
+  </div>
+</div>

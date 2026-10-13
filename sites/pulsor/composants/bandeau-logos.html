@@ -1,0 +1,28 @@
+<!--
+name: Bandeau de logos défilant
+category: sliders
+description: Phrase de confiance puis rangée de logos clients qui défile en boucle, bords fondus.
+style: minimaliste
+complexite: moyenne
+-->
+<style>
+  .pls-logos{width:100%;max-width:1200px;display:grid;gap:var(--space-8);text-align:center;color:var(--color-muted);font:var(--weight-regular) var(--text-sm)/1.4 var(--font-body)}
+  .pls-logos p{margin:0}
+  .pls-logos__track{overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+  .pls-logos__row{display:flex;gap:var(--space-16);width:max-content;animation:pls-logos 28s linear infinite}
+  .pls-logos__row span{color:var(--color-text);font-size:var(--text-2xl);white-space:nowrap;opacity:.85}
+  .pls-logos__row span:nth-child(3n+1){font:italic var(--weight-regular) 28px var(--font-heading);letter-spacing:-.04em}
+  .pls-logos__row span:nth-child(3n+2){font:var(--weight-bold) 22px var(--font-body);letter-spacing:-.02em}
+  .pls-logos__row span:nth-child(3n){font:var(--weight-bold) 20px var(--font-mono);text-transform:uppercase}
+  @keyframes pls-logos{to{transform:translateX(-50%)}}
+</style>
+
+<div class="pls-logos">
+  <p>Ils nous ont fait confiance pour passer un cap.</p>
+  <div class="pls-logos__track">
+    <div class="pls-logos__row">
+      <span>northwind</span><span>Lumina</span><span>Kestrel</span><span>orbital</span><span>Fieldnote</span><span>Vanta</span>
+      <span>northwind</span><span>Lumina</span><span>Kestrel</span><span>orbital</span><span>Fieldnote</span><span>Vanta</span>
+    </div>
+  </div>
+</div>

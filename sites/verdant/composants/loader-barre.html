@@ -1,0 +1,15 @@
+<!--
+name: Barre de progression
+category: loaders
+description: Barre indéterminée qui glisse, avec libellé.
+style: organique
+complexite: simple
+-->
+<style>
+  .bar-loader{width:320px;font:var(--text-sm) var(--font-body);color:var(--color-muted)}
+  .bar-loader__track{margin-top:var(--space-3);height:8px;border-radius:var(--radius-full);background:color-mix(in srgb,var(--color-primary) 14%,transparent);overflow:hidden}
+  .bar-loader__fill{width:40%;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--color-primary),var(--color-secondary));animation:bar-slide 1.4s var(--ease-standard) infinite}
+  @keyframes bar-slide{from{transform:translateX(-100%)}to{transform:translateX(250%)}}
+</style>
+
+<div class="bar-loader"><span>Calcul de votre estimation…</span><div class="bar-loader__track"><div class="bar-loader__fill"></div></div></div>

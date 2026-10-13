@@ -1,0 +1,28 @@
+<!--
+name: Modale de confirmation
+category: modales
+description: Boîte de dialogue de confirmation d'action destructive.
+style: corporate
+complexite: moyenne
+-->
+<style>
+  .modal-backdrop{position:fixed;inset:0;display:grid;place-items:center;padding:var(--space-6);background:color-mix(in srgb,var(--color-text) 40%,transparent)}
+  .modal{width:min(100%,400px);background:var(--color-surface);border-radius:var(--radius-lg);padding:var(--space-8);box-shadow:var(--shadow-lg);animation:modal-in var(--duration-slow) var(--ease-emphasized)}
+  .modal__icon{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;font-weight:var(--weight-bold);color:var(--color-danger);background:color-mix(in srgb,var(--color-danger) 12%,transparent);margin-bottom:var(--space-5)}
+  .modal h2{margin:0 0 var(--space-2);font:var(--weight-bold) var(--text-xl)/1.2 var(--font-heading);color:var(--color-text)}
+  .modal p{margin:0 0 var(--space-8);color:var(--color-muted);line-height:var(--leading-normal)}
+  .modal__actions{display:flex;gap:var(--space-3);justify-content:flex-end}
+  .modal__actions button{border-radius:var(--radius-md);padding:var(--space-3) var(--space-5);font:var(--weight-medium) var(--text-sm) var(--font-body);cursor:pointer}
+  .modal__ghost{background:transparent;border:1px solid var(--color-border);color:var(--color-text)}
+  .modal__danger{background:var(--color-danger);border:1px solid var(--color-danger);color:#fff}
+  @keyframes modal-in{from{opacity:0;transform:translateY(12px) scale(.98)}}
+</style>
+
+<div class="modal-backdrop">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <div class="modal__icon">!</div>
+    <h2 id="m-title">Supprimer le projet ?</h2>
+    <p>Cette action est définitive. Les fichiers associés seront supprimés.</p>
+    <div class="modal__actions"><button class="modal__ghost">Annuler</button><button class="modal__danger">Supprimer</button></div>
+  </div>
+</div>

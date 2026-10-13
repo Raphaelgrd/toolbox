@@ -1,0 +1,12 @@
+{
+  "name": "Atelier Brut",
+  "url": null,
+  "domain": null,
+  "sector": {
+    "value": "creatif",
+    "label": "Studio créatif"
+  },
+  "description": "Studio fictif : jaune vif, traits épais, ombres dures, zéro arrondi.",
+  "style": "brutaliste",
+  "ambiance": "clair"
+}

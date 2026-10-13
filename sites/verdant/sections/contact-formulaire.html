@@ -1,0 +1,37 @@
+<!--
+name: Contact avec formulaire
+category: contact
+description: Deux colonnes : coordonnées à gauche, formulaire à droite.
+style: organique
+complexite: moyenne
+components: champ-newsletter
+-->
+<style>
+  .contact{display:grid;grid-template-columns:1fr 1.2fr;gap:var(--space-12);max-width:1080px;margin:0 auto;padding:var(--space-20) var(--space-6)}
+  .contact h2{margin:0;font:var(--weight-bold) var(--text-4xl)/1.1 var(--font-heading);color:var(--color-text)}
+  .contact__info p{color:var(--color-muted);line-height:var(--leading-normal);margin:var(--space-5) 0 var(--space-8)}
+  .contact ul{list-style:none;margin:0;padding:0;display:grid;gap:var(--space-4)}
+  .contact li{display:grid;gap:var(--space-1);color:var(--color-text)}
+  .contact li b{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.1em;color:var(--color-primary)}
+  .contact__form{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-4);padding:var(--space-8);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);box-shadow:var(--shadow-md)}
+  .contact__form label{display:grid;gap:var(--space-2);font-size:var(--text-sm);font-weight:var(--weight-medium);color:var(--color-text)}
+  .contact__form .is-full{grid-column:1/-1}
+  .contact__form input,.contact__form textarea{font:var(--text-base) var(--font-body);padding:var(--space-3) var(--space-4);border:1px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-bg);color:var(--color-text);resize:vertical}
+  .contact__form input:focus,.contact__form textarea:focus{outline:2px solid var(--color-primary);outline-offset:1px}
+  .contact__form button{grid-column:1/-1;border:0;padding:var(--space-4);border-radius:var(--radius-full);background:var(--color-primary);color:var(--color-surface);font:var(--weight-bold) var(--text-base) var(--font-body);cursor:pointer}
+  @media (max-width:760px){.contact{grid-template-columns:1fr}.contact__form{grid-template-columns:1fr}}
+</style>
+
+<section class="contact">
+  <div class="contact__info">
+    <h2>Une question sur votre contrat ?</h2>
+    <p>Notre équipe répond du lundi au samedi, de 8 h à 20 h.</p>
+    <ul><li><b>Téléphone</b>01 23 45 67 89</li><li><b>E-mail</b>bonjour@exemple.fr</li></ul>
+  </div>
+  <form class="contact__form" onsubmit="return false">
+    <label>Nom<input type="text" placeholder="Votre nom" /></label>
+    <label>E-mail<input type="email" placeholder="vous@exemple.fr" /></label>
+    <label class="is-full">Message<textarea rows="4" placeholder="Votre message"></textarea></label>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>

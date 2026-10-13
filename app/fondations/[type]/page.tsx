@@ -40,7 +40,7 @@ export default async function FoundationPage({ params }: Props) {
           {sites.map((s) => (
             <section key={s.slug} className="card overflow-hidden">
               <header className="flex items-center justify-between border-b border-line px-6 py-4">
-                <Link href={`/kits/${s.slug}`} className="flex items-center gap-3 font-semibold text-ink hover:underline">
+                <Link href={`/sites/${s.slug}`} className="flex items-center gap-3 font-semibold text-ink hover:underline">
                   <span className="size-3 rounded-full" style={{ background: s.kit.colors.primary }} />
                   {s.name}
                 </Link>

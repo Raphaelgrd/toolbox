@@ -1,0 +1,26 @@
+<!--
+name: FAQ accordéon
+category: faq
+description: Questions fréquentes en accordéon natif (details/summary).
+style: editorial
+complexite: simple
+-->
+<style>
+  .faq{max-width:760px;margin:0 auto;padding:var(--space-20) var(--space-6);color:var(--color-text)}
+  .faq h2{margin:0 0 var(--space-10);font:var(--weight-bold) var(--text-4xl)/1.1 var(--font-heading)}
+  .faq details{border-top:1px solid var(--color-border)}
+  .faq details:last-child{border-bottom:1px solid var(--color-border)}
+  .faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:var(--space-6);padding:var(--space-6) 0;font:var(--text-xl)/1.3 var(--font-heading)}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--color-primary);font-family:var(--font-body);transition:transform var(--duration-base) var(--ease-standard)}
+  .faq details[open] summary::after{transform:rotate(45deg)}
+  .faq details p{margin:0 0 var(--space-6);color:var(--color-muted);line-height:var(--leading-normal);max-width:60ch}
+</style>
+
+<section class="faq">
+  <h2>Questions fréquentes</h2>
+  <details open><summary>Comment se déroule un premier rendez-vous ?</summary><p>Une heure d'échange pour comprendre la situation et poser un premier diagnostic, sans engagement.</p></details>
+  <details><summary>Quels sont vos honoraires ?</summary><p>Forfait ou temps passé selon le dossier ; une convention écrite est remise avant toute intervention.</p></details>
+  <details><summary>Intervenez-vous à distance ?</summary><p>Oui, la plupart des échanges peuvent se tenir en visioconférence.</p></details>
+  <details><summary>Sous quel délai pouvez-vous intervenir ?</summary><p>En urgence sous 24 h, sinon dans la semaine.</p></details>
+</section>

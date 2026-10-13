@@ -1,0 +1,28 @@
+<!--
+name: Avis client
+category: cartes
+description: Citation courte centrée, avatar rond, nom, séparateur et cinq étoiles jaunes qui apparaissent en cascade.
+style: minimaliste
+complexite: moyenne
+-->
+<style>
+  .pls-review{display:grid;justify-items:center;gap:var(--space-3);max-width:300px;text-align:center;color:var(--color-text);font:var(--weight-medium) var(--text-sm)/1.4 var(--font-body);letter-spacing:-.015em}
+  .pls-review p{margin:0}
+  .pls-review__foot{display:flex;align-items:center;gap:var(--space-3)}
+  .pls-review__who{display:flex;align-items:center;gap:var(--space-2)}
+  .pls-review__avatar{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,color-mix(in srgb,var(--color-primary) 70%,#fff),var(--color-primary));color:#fff;font-size:var(--text-xs)}
+  .pls-review__sep{width:1px;height:14px;background:color-mix(in srgb,var(--color-text) 15%,transparent)}
+  .pls-review__stars{display:flex;gap:2px;color:var(--color-accent)}
+  .pls-review__stars i{font-style:normal;font-size:15px;line-height:1;opacity:0;transform:translateY(6px);animation:pls-star var(--duration-slow) var(--ease-standard) forwards}
+  .pls-review__stars i:nth-child(2){animation-delay:.07s}.pls-review__stars i:nth-child(3){animation-delay:.14s}.pls-review__stars i:nth-child(4){animation-delay:.21s}.pls-review__stars i:nth-child(5){animation-delay:.28s}
+  @keyframes pls-star{to{opacity:1;transform:none}}
+</style>
+
+<figure class="pls-review">
+  <p>« Un site exceptionnel, livré dans les temps et au-delà de nos attentes. »</p>
+  <figcaption class="pls-review__foot">
+    <span class="pls-review__who"><span class="pls-review__avatar">CM</span>Camille M.</span>
+    <span class="pls-review__sep"></span>
+    <span class="pls-review__stars"><i>★</i><i>★</i><i>★</i><i>★</i><i>★</i></span>
+  </figcaption>
+</figure>

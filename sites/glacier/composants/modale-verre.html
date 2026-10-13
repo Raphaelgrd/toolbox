@@ -1,0 +1,25 @@
+<!--
+name: Feuille de verre
+category: modales
+description: Panneau modal en verre dépoli qui monte du bas.
+style: glassmorphism
+complexite: moyenne
+-->
+<style>
+  .sheet-stage{position:fixed;inset:0;display:flex;align-items:flex-end;justify-content:center;padding:var(--space-6);background:radial-gradient(circle at 20% 20%,color-mix(in srgb,var(--color-primary) 50%,transparent),transparent 50%),radial-gradient(circle at 80% 40%,color-mix(in srgb,var(--color-secondary) 40%,transparent),transparent 50%),var(--color-bg)}
+  .sheet{width:min(100%,420px);text-align:center;padding:var(--space-6) var(--space-8) var(--space-8);border-radius:var(--radius-lg);background:color-mix(in srgb,var(--color-surface) 50%,transparent);border:1px solid color-mix(in srgb,var(--color-text) 14%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);color:var(--color-text);animation:sheet-up var(--duration-slow) var(--ease-emphasized)}
+  .sheet__grip{display:block;width:40px;height:4px;margin:0 auto var(--space-6);border-radius:var(--radius-full);background:var(--color-muted)}
+  .sheet h2{margin:0 0 var(--space-2);font:var(--weight-bold) var(--text-2xl)/1.2 var(--font-heading)}
+  .sheet p{margin:0 0 var(--space-6);color:var(--color-muted)}
+  .sheet button{width:100%;border:0;padding:var(--space-4);border-radius:var(--radius-md);background:var(--color-text);color:var(--color-bg);font:var(--weight-bold) var(--text-base) var(--font-body);cursor:pointer}
+  @keyframes sheet-up{from{transform:translateY(40px);opacity:0}}
+</style>
+
+<div class="sheet-stage">
+  <div class="sheet" role="dialog" aria-modal="true">
+    <span class="sheet__grip"></span>
+    <h2>Virement envoyé</h2>
+    <p>250,00 € vers Compte épargne. Disponible immédiatement.</p>
+    <button>Terminé</button>
+  </div>
+</div>

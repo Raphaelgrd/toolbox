@@ -1,0 +1,12 @@
+{
+  "name": "Maison Lumen",
+  "url": null,
+  "domain": null,
+  "sector": {
+    "value": "juridique",
+    "label": "Juridique"
+  },
+  "description": "Cabinet fictif : fond nuit, serif éditoriale, filets dorés.",
+  "style": "editorial",
+  "ambiance": "sombre"
+}

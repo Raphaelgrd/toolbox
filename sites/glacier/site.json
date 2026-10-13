@@ -1,0 +1,12 @@
+{
+  "name": "Glacier",
+  "url": null,
+  "domain": null,
+  "sector": {
+    "value": "fintech",
+    "label": "Fintech"
+  },
+  "description": "Néobanque fictive : nuit profonde, verre dépoli, lueurs violettes.",
+  "style": "glassmorphism",
+  "ambiance": "sombre"
+}

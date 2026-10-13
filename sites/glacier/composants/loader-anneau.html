@@ -1,0 +1,13 @@
+<!--
+name: Anneau dégradé
+category: loaders
+description: Anneau en dégradé conique qui tourne, avec masque.
+style: glassmorphism
+complexite: moyenne
+-->
+<style>
+  .ring{width:64px;height:64px;border-radius:50%;background:conic-gradient(from 0deg,transparent,var(--color-primary),var(--color-secondary));-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 5px));mask:radial-gradient(farthest-side,transparent calc(100% - 6px),#000 calc(100% - 5px));animation:ring-spin 1s linear infinite;filter:drop-shadow(0 0 12px var(--color-primary))}
+  @keyframes ring-spin{to{transform:rotate(1turn)}}
+</style>
+
+<div class="ring" role="status" aria-label="Chargement"></div>

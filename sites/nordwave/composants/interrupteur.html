@@ -1,0 +1,18 @@
+<!--
+name: Interrupteur
+category: toggles
+description: Switch accessible basé sur une checkbox, sans JavaScript.
+style: corporate
+complexite: simple
+-->
+<style>
+  .switch{display:inline-flex;align-items:center;gap:var(--space-3);font:var(--text-base) var(--font-body);color:var(--color-text);cursor:pointer}
+  .switch input{position:absolute;opacity:0;pointer-events:none}
+  .switch__track{width:44px;height:26px;border-radius:var(--radius-full);background:var(--color-border);padding:3px;transition:background var(--duration-base) var(--ease-standard)}
+  .switch__thumb{display:block;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:var(--shadow-sm);transition:transform var(--duration-base) var(--ease-emphasized)}
+  .switch input:checked+.switch__track{background:var(--color-primary)}
+  .switch input:checked+.switch__track .switch__thumb{transform:translateX(18px)}
+  .switch input:focus-visible+.switch__track{outline:2px solid var(--color-primary);outline-offset:2px}
+</style>
+
+<label class="switch"><input type="checkbox" checked /><span class="switch__track"><span class="switch__thumb"></span></span>Notifications</label>

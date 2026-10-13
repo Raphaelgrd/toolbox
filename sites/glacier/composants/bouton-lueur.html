@@ -1,0 +1,15 @@
+<!--
+name: Bouton lueur
+category: boutons
+description: Bouton dégradé avec halo animé, pour un CTA principal sur fond sombre.
+style: glassmorphism
+complexite: moyenne
+-->
+<style>
+  .glow-btn{position:relative;border:0;padding:var(--space-4) var(--space-8);border-radius:var(--radius-full);font:var(--weight-bold) var(--text-base)/1 var(--font-body);color:#fff;cursor:pointer;background:linear-gradient(120deg,var(--color-primary),var(--color-secondary));box-shadow:var(--shadow-md);isolation:isolate}
+  .glow-btn::before{content:"";position:absolute;inset:-3px;border-radius:inherit;background:linear-gradient(120deg,var(--color-primary),var(--color-accent),var(--color-secondary));filter:blur(14px);opacity:.6;z-index:-1;animation:glow-pulse 2.4s var(--ease-standard) infinite alternate}
+  .glow-btn:hover::before{opacity:.95}
+  @keyframes glow-pulse{from{transform:scale(.96)}to{transform:scale(1.04)}}
+</style>
+
+<button class="glow-btn"><span>Ouvrir un compte</span></button>

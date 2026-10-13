@@ -150,17 +150,17 @@ function NavContent({ counts, collapsed }: { counts: NavCounts; collapsed: boole
         />
       </nav>
 
-      <Group title="Kits" collapsed={collapsed}>
-        <NavItem href="/kits" label="Tous les kits" icon={Palette} count={counts.kits.length} active={is("/kits")} collapsed={collapsed} />
+      <Group title="Sites" collapsed={collapsed}>
+        <NavItem href="/sites" label="Tous les sites" icon={Palette} count={counts.kits.length} active={is("/sites")} collapsed={collapsed} />
         {!collapsed &&
           counts.kits.map((k) => (
             <NavItem
               key={k.slug}
-              href={`/kits/${k.slug}`}
+              href={`/sites/${k.slug}`}
               label={k.name}
               dot={k.primary}
               count={k.count}
-              active={is(`/kits/${k.slug}`)}
+              active={pathname.startsWith(`/sites/${k.slug}`)}
               collapsed={collapsed}
             />
           ))}

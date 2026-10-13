@@ -1,0 +1,12 @@
+{
+  "name": "Verdant",
+  "url": null,
+  "domain": null,
+  "sector": {
+    "value": "energie",
+    "label": "Énergie & environnement"
+  },
+  "description": "Marque fictive d'énergie verte : tons naturels, papier chaud.",
+  "style": "organique",
+  "ambiance": "clair"
+}

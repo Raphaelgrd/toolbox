@@ -31,8 +31,8 @@ npm run dev                 # http://localhost:3000
 - **Fiche élément** : aperçu desktop / tablette / mobile, bascule clair / sombre, sélecteur de kit pour voir
   l'élément aux couleurs d'un autre site, onglets HTML / CSS / React / Tokens avec bouton copier,
   tags, site d'origine, éléments similaires.
-- **Page kit** : palette, échelle typo, espacements, rayons, ombres, animations, avec export en
-  variables CSS, thème Tailwind v4 ou JSON.
+- **Un espace par site** (`/sites/<site>`) : vue d'ensemble, ses sections, ses composants et son
+  design system (palette, typo, espacements, rayons, ombres, animations, export CSS / Tailwind v4 / JSON).
 
 ## Données
 
@@ -44,9 +44,13 @@ Le schéma Prisma (`prisma/schema.prisma`) compte 5 modèles : `Site`, `TokenKit
   les variables sont résolues avec le kit, puis la couleur est rangée dans une famille de teinte.
 - La version **React** est générée depuis le HTML (`lib/jsx.ts`).
 
-Le seed crée 6 kits fictifs (Pulsor, Maison Lumen, Nordwave, Verdant, Atelier Brut, Glacier),
-25 composants et 10 sections. Si le dossier `~/mon-clone/components/toolbox` existe
-(ou le dossier indiqué par `TOOLBOX_IMPORT_DIR`), ses fichiers `.html` sont aussi importés.
+Chaque site a son dossier dans `sites/<site>/` (fiche, kit, composants et sections en `.html`) :
+voir [`sites/README.md`](sites/README.md). Ajouter un site = ajouter un dossier puis `npm run db:seed`.
+
+Sites présents : **Pulsor** (tiré de pulsor.agency : 13 composants, 4 sections, kit réel) et 5 sites
+fictifs de démonstration (Atelier Brut, Glacier, Maison Lumen, Nordwave, Verdant), à retirer quand
+les vrais sites arriveront. Si le dossier `~/mon-clone/components/toolbox` existe (ou celui indiqué
+par `TOOLBOX_IMPORT_DIR`), ses `.html` sont aussi importés dans Pulsor.
 
 ## Brancher une autre source (Signal)
 
@@ -63,7 +67,9 @@ components/          sidebar, barre de filtres, carte d'aperçu, fiche, kit…
 lib/library-store.ts accès aux données (interface + implémentation Prisma)
 lib/kit.ts           conversion des kits (CSS, Tailwind, JSON)
 lib/preview.ts       document HTML isolé des aperçus
-prisma/              schéma, seed et données de démo
+prisma/              schéma et seed (lit le dossier sites/)
+sites/               un dossier par site : site.json, kit.json, composants/, sections/
+lib/site-folders.ts  lecture des dossiers de sites
 ```
 
 `components/preview-card.tsx` est la carte d'aperçu partagée. Le sélecteur à 3 choix du MCP

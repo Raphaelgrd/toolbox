@@ -1,0 +1,18 @@
+<!--
+name: Bascule OUI / NON
+category: toggles
+description: Bascule brutaliste à deux états écrits.
+style: brutaliste
+complexite: simple
+-->
+<style>
+  .brut-toggle input{position:absolute;opacity:0}
+  .brut-toggle span{display:inline-grid;grid-template-columns:1fr 1fr;width:140px;border:3px solid var(--color-border);box-shadow:var(--shadow-sm);font:var(--weight-bold) var(--text-base)/1 var(--font-heading);cursor:pointer;background:var(--color-surface)}
+  .brut-toggle span::before,.brut-toggle span::after{padding:var(--space-3);text-align:center;transition:background var(--duration-fast) linear}
+  .brut-toggle span::before{content:attr(data-on)}
+  .brut-toggle span::after{content:attr(data-off);background:var(--color-text);color:var(--color-surface)}
+  .brut-toggle input:checked+span::before{background:var(--color-primary)}
+  .brut-toggle input:checked+span::after{background:transparent;color:var(--color-text)}
+</style>
+
+<label class="brut-toggle"><input type="checkbox" /><span data-on="OUI" data-off="NON"></span></label>
