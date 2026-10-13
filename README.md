@@ -6,10 +6,21 @@ Pas de connexion : l'app est accessible librement.
 
 ## Lancer l'app
 
-Il faut Node 20+ et une base Postgres (locale, Supabase ou Neon).
+Le plus simple, sans base de données : l'app lit directement les dossiers `sites/`.
 
 ```bash
 npm install
+npm run dev                 # http://localhost:3000
+```
+
+Sur Vercel, il n'y a rien à configurer : il suffit de ne pas définir `DATABASE_URL`.
+
+### Avec Postgres (optionnel)
+
+Avec beaucoup de sites, une base Postgres (locale, Supabase ou Neon) sert d'index rapide.
+Dès que `DATABASE_URL` est défini, l'app lit la base au lieu des fichiers :
+
+```bash
 cp .env.example .env        # puis renseigner DATABASE_URL
 npm run db:push             # crée les tables
 npm run db:seed             # remplit la base avec les données de démo
@@ -21,7 +32,7 @@ npm run dev                 # http://localhost:3000
 ## Ce qu'il y a dedans
 
 - **Explorer** (`/`) : tous les éléments, avec la barre de filtres et les compteurs.
-- **Sidebar repliable** : Kits, Sections (Hero, Features, Pricing…), Composants (Boutons, Cartes…),
+- **Sidebar repliable** : Sites, Sections (Hero, Features, Pricing…), Composants (Boutons, Cartes…),
   Fondations (Couleurs, Typos, Espacements, Ombres, Animations), chaque entrée avec son nombre d'éléments.
 - **Multi-filtres** : secteur, couleur dominante (pastilles), style, ambiance, complexité, site d'origine.
   C'est un OU à l'intérieur d'une famille (bleu *ou* vert) et un ET entre familles (bleu *et* SaaS).

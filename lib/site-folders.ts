@@ -131,3 +131,26 @@ export function readSitesDir(root: string): SiteFolder[] {
     }
   return sites;
 }
+
+// Libellés lisibles des tags déduits des métadonnées.
+const STYLE_LABELS: Record<string, string> = {
+  minimaliste: "Minimaliste",
+  editorial: "Éditorial",
+  corporate: "Corporate",
+  organique: "Organique",
+  brutaliste: "Brutaliste",
+  glassmorphism: "Glassmorphism",
+};
+const COMPLEXITE_LABELS: Record<string, string> = { simple: "Simple", moyenne: "Moyenne", avancee: "Avancée" };
+const LICENCE_LABELS: Record<string, string> = { libre: "Réutilisable", inspiration: "Inspiration seulement" };
+
+/** Tags d'un élément : style, ambiance (celle du site), complexité, licence. */
+export function tagsFor(el: Pick<FolderElement, "style" | "complexite" | "licence">, site: SiteFolder) {
+  const ambiance = site.info.ambiance;
+  return [
+    { family: "style", value: el.style, label: STYLE_LABELS[el.style] ?? el.style },
+    { family: "ambiance", value: ambiance, label: ambiance === "sombre" ? "Sombre" : "Clair" },
+    { family: "complexite", value: el.complexite, label: COMPLEXITE_LABELS[el.complexite] ?? el.complexite },
+    { family: "licence", value: el.licence, label: LICENCE_LABELS[el.licence] ?? el.licence },
+  ];
+}

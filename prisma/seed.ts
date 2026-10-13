@@ -10,31 +10,10 @@ import { basename, join } from "node:path";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/db";
 import { libraryStore } from "../lib/library-store";
-import { readSitesDir, type FolderElement, type SiteFolder } from "../lib/site-folders";
+import { readSitesDir, tagsFor, type FolderElement, type SiteFolder } from "../lib/site-folders";
 import { COMPONENT_CATEGORIES } from "../lib/taxonomy";
 
 const SITES_DIR = join(__dirname, "..", "sites");
-
-const STYLE_LABELS: Record<string, string> = {
-  minimaliste: "Minimaliste",
-  editorial: "Éditorial",
-  corporate: "Corporate",
-  organique: "Organique",
-  brutaliste: "Brutaliste",
-  glassmorphism: "Glassmorphism",
-};
-const COMPLEXITE_LABELS: Record<string, string> = { simple: "Simple", moyenne: "Moyenne", avancee: "Avancée" };
-const LICENCE_LABELS: Record<string, string> = { libre: "Réutilisable", inspiration: "Inspiration seulement" };
-
-function tagsFor(el: Pick<FolderElement, "style" | "complexite" | "licence">, site: SiteFolder) {
-  const ambiance = site.info.ambiance;
-  return [
-    { family: "style", value: el.style, label: STYLE_LABELS[el.style] ?? el.style },
-    { family: "ambiance", value: ambiance, label: ambiance === "sombre" ? "Sombre" : "Clair" },
-    { family: "complexite", value: el.complexite, label: COMPLEXITE_LABELS[el.complexite] ?? el.complexite },
-    { family: "licence", value: el.licence, label: LICENCE_LABELS[el.licence] ?? el.licence },
-  ];
-}
 
 async function reset() {
   await prisma.section.deleteMany();

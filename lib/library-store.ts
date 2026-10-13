@@ -9,10 +9,11 @@ import { prisma } from "./db";
 import { colorFamily, dominantColor } from "./color";
 import { buildReactSource, extractTokens } from "./jsx";
 import { normalizeKit } from "./kit";
-import { COLOR_FAMILIES, FILTER_FAMILIES, type ElementKind, type FilterFamily } from "./taxonomy";
+import { folderStore } from "./folder-store";
+import { buildListResult, rankSimilar } from "./list-logic";
+import { COLOR_FAMILIES, FILTER_FAMILIES, type ElementKind } from "./taxonomy";
 import type {
   CreateElementInput,
-  FacetValue,
   Filters,
   KitTokens,
   LibraryElement,
@@ -79,24 +80,6 @@ function toElement(kind: ElementKind, row: ComponentRow | SectionRow): LibraryEl
     site: { slug: row.site.slug, name: row.site.name, url: row.site.url, sector: row.site.sector },
     variants: kind === "component" ? (row as ComponentRow).variants : undefined,
   };
-}
-
-function valuesOf(el: LibraryElement, family: FilterFamily): string[] {
-  if (family === "couleur") return el.colorFamily ? [el.colorFamily] : [];
-  if (family === "site") return [el.site.slug];
-  return el.tags.filter((t) => t.family === family).map((t) => t.value);
-}
-
-/** OU à l'intérieur d'une famille, ET entre familles. */
-function matches(el: LibraryElement, filters: Filters, skip?: FilterFamily): boolean {
-  for (const { key } of FILTER_FAMILIES) {
-    if (key === skip) continue;
-    const wanted = filters[key];
-    if (!wanted?.length) continue;
-    const have = valuesOf(el, key);
-    if (!wanted.some((w) => have.includes(w))) return false;
-  }
-  return true;
 }
 
 function textWhere(query?: string) {
@@ -184,27 +167,7 @@ export const prismaStore: LibraryStore = {
     const filters = params.filters ?? {};
     const [candidates, labels] = await Promise.all([loadCandidates(params), facetLabels()]);
 
-    const facets = {} as Record<FilterFamily, FacetValue[]>;
-    for (const { key } of FILTER_FAMILIES) {
-      const counts = new Map<string, number>();
-      for (const el of candidates) {
-        if (!matches(el, filters, key)) continue;
-        for (const v of valuesOf(el, key)) counts.set(v, (counts.get(v) ?? 0) + 1);
-      }
-      // Une valeur sélectionnée reste visible même à 0, pour pouvoir la retirer.
-      for (const v of filters[key] ?? []) if (!counts.has(v)) counts.set(v, 0);
-      facets[key] = [...counts.entries()]
-        .map(([value, count]) => ({
-          value,
-          count,
-          label: labels.get(`${key}:${value}`) ?? value,
-          swatch: key === "couleur" ? COLOR_FAMILIES[value]?.swatch : undefined,
-        }))
-        .sort((a, b) => b.count - a.count || a.label.localeCompare(b.label, "fr"));
-    }
-
-    const items = candidates.filter((el) => matches(el, filters));
-    return { items: params.limit ? items.slice(0, params.limit) : items, total: items.length, facets };
+    return buildListResult(candidates, filters, labels, params.limit);
   },
 
   async search(query, params = {}) {
@@ -303,19 +266,7 @@ export const prismaStore: LibraryStore = {
 
   async similar(element, limit = 3) {
     const { items } = await this.list({ kind: element.kind });
-    const score = (el: LibraryElement) => {
-      let s = 0;
-      if (el.category === element.category) s += 4;
-      if (el.colorFamily && el.colorFamily === element.colorFamily) s += 1;
-      for (const t of el.tags) if (element.tags.some((o) => o.family === t.family && o.value === t.value)) s += 1;
-      return s;
-    };
-    return items
-      .filter((el) => el.slug !== element.slug)
-      .map((el) => ({ el, s: score(el) }))
-      .sort((a, b) => b.s - a.s)
-      .slice(0, limit)
-      .map((x) => x.el);
+    return rankSimilar(element, items, limit);
   },
 
   async linked(kind, slug) {
@@ -328,8 +279,13 @@ export const prismaStore: LibraryStore = {
   },
 };
 
-/** La source active. Pour brancher Signal : exporter ici un `signalStore` qui implémente LibraryStore. */
-export const libraryStore: LibraryStore = prismaStore;
+/**
+ * La source active.
+ * - DATABASE_URL défini : Postgres (index rapide, remplie par `npm run db:seed`) ;
+ * - sinon : lecture directe des dossiers sites/ (aucune base à configurer, idéal pour un premier déploiement).
+ * Pour brancher Signal : exporter ici un `signalStore` qui implémente LibraryStore.
+ */
+export const libraryStore: LibraryStore = process.env.DATABASE_URL ? prismaStore : folderStore;
 
 // ---------------------------------------------------------------------------
 // Filtres <-> URL (partagés par la barre de filtres et les pages serveur)
