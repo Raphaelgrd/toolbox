@@ -280,12 +280,13 @@ export const prismaStore: LibraryStore = {
 };
 
 /**
- * La source active.
- * - DATABASE_URL défini : Postgres (index rapide, remplie par `npm run db:seed`) ;
- * - sinon : lecture directe des dossiers sites/ (aucune base à configurer, idéal pour un premier déploiement).
+ * La source active : les dossiers sites/ par défaut (rien à configurer).
+ * Postgres seulement si LIBRARY_SOURCE=postgres est défini explicitement, une fois la base
+ * créée et remplie (`npm run db:push && npm run db:seed`). Un simple DATABASE_URL ne suffit pas :
+ * une intégration Vercel peut l'ajouter sur une base encore vide.
  * Pour brancher Signal : exporter ici un `signalStore` qui implémente LibraryStore.
  */
-export const libraryStore: LibraryStore = process.env.DATABASE_URL ? prismaStore : folderStore;
+export const libraryStore: LibraryStore = process.env.LIBRARY_SOURCE === "postgres" ? prismaStore : folderStore;
 
 // ---------------------------------------------------------------------------
 // Filtres <-> URL (partagés par la barre de filtres et les pages serveur)

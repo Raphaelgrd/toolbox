@@ -9,7 +9,7 @@ import { homedir } from "node:os";
 import { basename, join } from "node:path";
 import type { Prisma } from "@prisma/client";
 import { prisma } from "../lib/db";
-import { libraryStore } from "../lib/library-store";
+import { prismaStore as libraryStore } from "../lib/library-store";
 import { readSitesDir, tagsFor, type FolderElement, type SiteFolder } from "../lib/site-folders";
 import { COMPONENT_CATEGORIES } from "../lib/taxonomy";
 

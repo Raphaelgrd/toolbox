@@ -13,18 +13,20 @@ npm install
 npm run dev                 # http://localhost:3000
 ```
 
-Sur Vercel, il n'y a rien à configurer : il suffit de ne pas définir `DATABASE_URL`.
+Sur Vercel, il n'y a rien à configurer : l'app lit les dossiers `sites/` par défaut,
+même si une intégration (Prisma Postgres, Neon…) a ajouté un `DATABASE_URL`.
 
 ### Avec Postgres (optionnel)
 
 Avec beaucoup de sites, une base Postgres (locale, Supabase ou Neon) sert d'index rapide.
-Dès que `DATABASE_URL` est défini, l'app lit la base au lieu des fichiers :
+L'app ne lit la base que si `LIBRARY_SOURCE=postgres` est défini (en plus de `DATABASE_URL`),
+une fois la base créée et remplie :
 
 ```bash
 cp .env.example .env        # puis renseigner DATABASE_URL
 npm run db:push             # crée les tables
 npm run db:seed             # remplit la base avec les données de démo
-npm run dev                 # http://localhost:3000
+LIBRARY_SOURCE=postgres npm run dev
 ```
 
 `npm run db:reset` vide la base et la remplit à nouveau.
