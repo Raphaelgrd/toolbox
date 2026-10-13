@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+/* Direction artistique : coque sombre, panneau de travail blanc très arrondi,
+   cartes à filet fin, titres serrés, accent dégradé magenta → orange. */
+@theme {
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+
+  --color-shell: #0f0f10;
+  --color-shell-2: #1a1a1c;
+  --color-shell-line: #2a2a2d;
+  --color-shell-text: #a1a1a6;
+  --color-ink: #121212;
+  --color-ink-2: #3a3a3a;
+  --color-mute: #76736f;
+  --color-line: #e8e5e1;
+  --color-paper: #ffffff;
+  --color-paper-2: #f6f5f3;
+  --color-hot: #e5195e;
+  --color-warm: #ff7a1a;
+  --color-late: #d92d20;
+  --color-late-bg: #fdecec;
+
+  --radius-panel: 28px;
+  --radius-card: 22px;
+}
+
+@layer base {
+  html { background: var(--color-shell); }
+  body { @apply font-sans text-ink antialiased; background: var(--color-shell); }
+  ::selection { background: color-mix(in srgb, var(--color-hot) 25%, transparent); }
+}
+
+@utility accent-gradient { background-image: linear-gradient(90deg, var(--color-hot), var(--color-warm)); }
+@utility heading { font-weight: 700; letter-spacing: -0.035em; color: var(--color-ink); }
+@utility card {
+  border-radius: var(--radius-card);
+  border: 1px solid var(--color-line);
+  background: var(--color-paper);
+  box-shadow: 0 1px 2px rgba(18, 18, 18, 0.04);
+}
+@utility btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+  border-radius: 999px; padding: 0.5rem 1rem; font-size: 0.875rem; font-weight: 500;
+  transition: background-color 150ms, border-color 150ms, color 150ms;
+  white-space: nowrap;
+}
+@utility btn-solid { @apply btn bg-ink text-paper hover:bg-ink-2; }
+@utility btn-outline { @apply btn border border-line bg-paper text-ink hover:border-ink; }
+@utility eyebrow { @apply text-[11px] font-semibold uppercase tracking-[0.12em] text-mute; }
+@utility seg { @apply inline-flex gap-1 rounded-full border border-line bg-paper-2 p-1; }
+@utility seg-item { @apply rounded-full px-4 py-1.5 text-sm font-medium text-mute transition hover:text-ink; }
+
+.seg-item[data-active="true"] {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}

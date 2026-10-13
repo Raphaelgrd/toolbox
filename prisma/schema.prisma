@@ -1,0 +1,120 @@
+// Librairie UI : 5 objets (Site, TokenKit, Component, Section, Tag).
+// Toute lecture/écriture passe par lib/library-store.ts, jamais directement par Prisma
+// depuis l'interface : c'est ce qui permettra de brancher Signal plus tard.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum SiteStatus {
+  DRAFT
+  VALIDATED
+}
+
+/// Le site analysé ou créé en interne.
+model Site {
+  id                String      @id @default(cuid())
+  slug              String      @unique
+  name              String
+  url               String?
+  domain            String?     @unique
+  sector            String
+  description       String?
+  analyzedAt        DateTime    @default(now())
+  screenshotDesktop String?
+  screenshotMobile  String?
+  status            SiteStatus  @default(VALIDATED)
+  kit               TokenKit?
+  components        Component[]
+  sections          Section[]
+  tags              Tag[]       @relation("SiteTags")
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+/// Le design system extrait du site. Chaque groupe est un objet JSON
+/// { "nom-du-token": "valeur" } ; les clés deviennent des variables CSS.
+model TokenKit {
+  id          String @id @default(cuid())
+  siteId      String @unique
+  site        Site   @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  colors      Json // { primary, secondary, accent, bg, surface, text, muted, border, success, danger }
+  typography  Json // { families: {heading, body, mono}, sizes: {...}, weights: {...}, leading: {...} }
+  spacing     Json // { "1": "4px", ... }
+  radii       Json // { sm, md, lg, full }
+  shadows     Json // { sm, md, lg }
+  breakpoints Json // { sm, md, lg, xl }
+  motion      Json // { durations: {fast, base, slow}, easings: {standard, emphasized} }
+}
+
+/// Un élément réutilisable (bouton, carte, input...).
+model Component {
+  id            String    @id @default(cuid())
+  slug          String    @unique
+  name          String
+  category      String // boutons, cartes, inputs, navigation, toggles, loaders, badges, modales, sliders
+  description   String?
+  variants      Json      @default("[]")
+  html          String
+  css           String
+  react         String
+  dependencies  String[]
+  tokensUsed    String[]
+  dominantColor String? // hex calculé automatiquement
+  colorFamily   String? // famille de teinte : bleu, vert, noir...
+  license       String    @default("libre")
+  siteId        String
+  site          Site      @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  sections      Section[] @relation("SectionComponents")
+  tags          Tag[]     @relation("ComponentTags")
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([category])
+  @@index([siteId])
+}
+
+/// Un bloc de page complet (hero, pricing, footer...).
+model Section {
+  id            String      @id @default(cuid())
+  slug          String      @unique
+  name          String
+  type          String // hero, features, pricing, temoignages, cta, faq, footer, contact
+  description   String?
+  html          String
+  css           String
+  react         String
+  dependencies  String[]
+  tokensUsed    String[]
+  dominantColor String?
+  colorFamily   String?
+  license       String      @default("libre")
+  siteId        String
+  site          Site        @relation(fields: [siteId], references: [id], onDelete: Cascade)
+  components    Component[] @relation("SectionComponents")
+  tags          Tag[]       @relation("SectionTags")
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+
+  @@index([type])
+  @@index([siteId])
+}
+
+/// Une valeur de filtre. family : secteur, couleur, style, ambiance, complexite, licence.
+model Tag {
+  id         String      @id @default(cuid())
+  family     String
+  value      String
+  label      String
+  sites      Site[]      @relation("SiteTags")
+  components Component[] @relation("ComponentTags")
+  sections   Section[]   @relation("SectionTags")
+
+  @@unique([family, value])
+  @@index([family])
+}
